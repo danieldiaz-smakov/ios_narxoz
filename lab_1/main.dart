@@ -49,6 +49,10 @@ void main() {
     // TASK 3
     int vowels = countVowels("flutter mobile ios development");
     print("Vowels: $vowels");
+
+    // TASK 4
+    printMinMax(numbers);
+    printMinMax(numbers1);
 }
 
 // TASK 1
@@ -148,6 +152,21 @@ int first = numbers[0];
 int last = numbers[numbers.length - 1];
 // TASK4
 // Manual min & max finder
+
+void printMinMax(List<int> list) {
+  int max = list[0];
+  int min = list[0];
+  for (int i = 1; i < list.length; i++) {
+    if (list[i] > max) {
+      max = list[i];
+    }
+    if (list[i] < min) {
+      min = list[i];
+    }
+  }
+  print("max: $max, min: $min");
+}
+
 
 // TASK 5
 // Prime Number Checker
