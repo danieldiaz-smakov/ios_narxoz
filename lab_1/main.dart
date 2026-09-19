@@ -53,6 +53,11 @@ void main() {
     // TASK 4
     printMinMax(numbers);
     printMinMax(numbers1);
+
+    // TASK 5
+    printPrimeResult(3);
+    printPrimeResult(6);
+    printPrimeResult(1);
 }
 
 // TASK 1
@@ -172,3 +177,23 @@ void printMinMax(List<int> list) {
 // Prime Number Checker
 // 3 -> prime number
 // 6 -> not prime number
+
+void printPrimeResult(int n) {
+  if (isPrime(n)) {
+    print("$n -> prime number");
+  } else {
+    print("$n -> not prime number");
+  }
+}
+
+bool isPrime(int n) {
+  if (n < 2) {
+    return false;
+  }
+  for (int i = 2; i * i <= n; i++) {
+    if (n % i == 0) {
+      return false;
+    }
+  }
+  return true;
+}
