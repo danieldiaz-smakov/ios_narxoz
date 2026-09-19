@@ -45,6 +45,10 @@ void main() {
     printNextDay(28, 2, 2100);  // 01.03.2100
     printNextDay(28, 2, 2000);  // 29.02.2000
     printNextDay(31, 12, 2025); // 01.01.2026
+
+    // TASK 3
+    int vowels = countVowels("flutter mobile ios development");
+    print("Vowels: $vowels");
 }
 
 // TASK 1
@@ -123,6 +127,20 @@ bool isLeapYear(int year) {
 
 // TASK3
 // Vowel Counter in a String -> "flutter mobile development" -> 8
+
+int countVowels(String text) {
+  String vowels = "aeiouAEIOU";
+  int count = 0;
+  for (int i = 0; i < text.length; i++) {
+    for (int j = 0; j < vowels.length; j++) {
+      if (text[i] == vowels[j]) {
+        count++;
+      }
+    }
+  }
+  return count;
+}
+
 
 List<int> numbers = [14, 88, 3, 42, 99, 12, 67]; //-> max: 99, min: 3
 List<int> numbers1 = [234, 34, 123, 44, 949, 112, 67]; //-> max: 949, min: 34
