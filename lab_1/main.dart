@@ -36,10 +36,20 @@ void main() {
 
     // TASK 1
     printMultiplicationTables();
+
+    // TASK 2
+    printNextDay(5, 9, 2026);   // 06.09.2026
+    printNextDay(28, 2, 2024);  // 29.02.2024
+    printNextDay(28, 2, 2026);  // 01.03.2026
+    printNextDay(29, 2, 2026);  // invalid date
+    printNextDay(28, 2, 2100);  // 01.03.2100
+    printNextDay(28, 2, 2000);  // 29.02.2000
+    printNextDay(31, 12, 2025); // 01.01.2026
 }
 
 // TASK 1
 // OUTPUT MULTIPLICATION TABLE  1-10
+
 void printMultiplicationTables() {
   for (int a = 1; a <= 10; a++) {
     print("-- Table for $a");
@@ -48,6 +58,7 @@ void printMultiplicationTables() {
     }
   }
 }
+
 
 // TASK 2
 // next day : examples:
@@ -60,6 +71,55 @@ void printMultiplicationTables() {
 // 31.12.2025 -> 01.01.2026
 // 2000,2400 leap year
 // 2100,2200,2300 isn`t leap year
+
+void printNextDay(int day, int month, int year) {
+  String input = "${twoDigits(day)}.${twoDigits(month)}.$year";
+
+  if (month < 1 || month > 12 || day < 1 || day > daysInMonth(month, year)) {
+    print("$input -> invalid date");
+    return;
+  }
+
+  int newDay = day + 1;
+  int newMonth = month;
+  int newYear = year;
+
+  if (newDay > daysInMonth(month, year)) {
+    newDay = 1;
+    newMonth = month + 1;
+    if (newMonth > 12) {
+      newMonth = 1;
+      newYear = year + 1;
+    }
+  }
+
+  print("$input -> ${twoDigits(newDay)}.${twoDigits(newMonth)}.$newYear");
+}
+
+int daysInMonth(int month, int year) {
+  if (month == 2) {
+    if (isLeapYear(year)) {
+      return 29;
+    }
+    return 28;
+  }
+  if (month == 4 || month == 6 || month == 9 || month == 11) {
+    return 30;
+  }
+  return 31;
+}
+
+String twoDigits(int n) {
+  if (n < 10) {
+    return "0$n";
+  }
+  return "$n";
+}
+
+bool isLeapYear(int year) {
+  return (year % 4 == 0 && year % 100 != 0) || year % 400 == 0;
+}
+
 
 // TASK3
 // Vowel Counter in a String -> "flutter mobile development" -> 8
